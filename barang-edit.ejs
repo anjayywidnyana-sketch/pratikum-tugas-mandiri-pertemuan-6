@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Barang</title>
+</head>
+<body>
+
+    <h1>Edit Barang</h1>
+
+    <form action="/barang/edit/<%= barang.id %>" method="POST">
+
+        <label>Nama Barang:</label><br>
+        <input
+            type="text"
+            name="nama_barang"
+            value="<%= barang.nama_barang %>"
+            required
+        >
+        <br><br>
+
+        <label>Kategori:</label><br>
+        <input
+            type="text"
+            name="kategori"
+            value="<%= barang.kategori %>"
+            required
+        >
+        <br><br>
+
+        <label>Deskripsi:</label><br>
+        <textarea name="deskripsi"><%= barang.deskripsi %></textarea>
+        <br><br>
+
+        <label>Harga:</label><br>
+        <input
+            type="number"
+            name="harga"
+            value="<%= barang.harga %>"
+            required
+        >
+        <br><br>
+
+        <label>Stok:</label><br>
+        <input
+            type="number"
+            name="stok"
+            value="<%= barang.stok %>"
+            required
+        >
+        <br><br>
+
+        <label>Status:</label><br>
+        <select name="status" required>
+
+            <option
+                value="Tersedia"
+                <%= barang.status === 'Tersedia' ? 'selected' : '' %>
+            >
+                Tersedia
+            </option>
+
+            <option
+                value="Habis"
+                <%= barang.status === 'Habis' ? 'selected' : '' %>
+            >
+                Habis
+            </option>
+
+        </select>
+        <br><br>
+
+        <label>Tanggal Masuk:</label><br>
+        <input
+            type="date"
+            name="tanggal_masuk"
+            value="<%= new Date(barang.tanggal_masuk)
+                .toISOString().split('T')[0] %>"
+            required
+        >
+        <br><br>
+
+        <button type="submit">
+            Update Barang
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="/barang">
+        Kembali ke Daftar Barang
+    </a>
+
+</body>
+</html>
